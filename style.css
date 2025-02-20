@@ -1,0 +1,357 @@
+/*base
+/*--------------------------------------------*/
+@keyframes backgroundMovement {
+    0% {
+        background-position: 20% 20%;
+        background-size: 110%;
+    }
+    25% {
+        background-position: 80% 20%;
+        background-size: 115%;
+    }
+    50% {
+        background-position: 80% 80%;
+        background-size: 120%;
+    }
+    75% {
+        background-position: 20% 80%;
+        background-size: 115%;
+    }
+    100% {
+        background-position: 20% 20%;
+        background-size: 110%;
+    }
+}
+
+[class*="MainPage_vibe"] {
+    animation: backgroundMovement 15s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955) !important;
+}
+
+[class*="PageHeaderBase_coverCell"] > div {
+    transition: all 0.2s ease-in-out;
+    border-radius: 332px;
+    &:hover {
+        border-radius: 12px;
+    }
+}
+.avatar-zoom {
+    cursor: zoom-in;
+    overflow: hidden;
+    transform-origin: center;
+}
+/*--------------------------------------------*/
+/*titlebar*/
+/*--------------------------------------------*/
+.PSBpanel {
+	left: -100px;
+}
+/*--------------------------------------------*/
+/* main
+/*--------------------------------------------*/
+.Content_main__8_wIa {
+    flex-grow: 1;
+    border: 1px solid var(--ym-outline-color-primary-disabled);
+    border-radius: var(--ym-radius-size-xl);
+    background-color: var(--ym-outline-color-primary-disabled) !important;
+    overflow: hidden
+}
+
+@media only screen and (max-width: 767.98px) {
+    .DefaultLayout_notificationErrorContainer__Qz_mD,.DefaultLayout_notificationInfoContainer__tKt7J {
+        inset-block-end:var(--ym-spacer-size-xxl);
+        width: 100%
+    }
+}
+
+.DefaultLayout_navbar__LIQWG {
+    grid-area: navbar
+}
+
+.DefaultLayout_navbar_application_macos__9dj3u {
+    margin-block-start:var(--ym-spacer-size-xxl)}
+
+.DefaultLayout_navbar_application_linux__ejlGn,.DefaultLayout_navbar_application_windows__3hDQ_ {
+    margin-block-start: calc(var(--ym-spacer-size-l)*-1)
+}
+
+.DefaultLayout_playerBar___9IaS {
+    grid-area: playerbar
+}
+
+.DefaultLayout_barBelow__y6PFU {
+    grid-area: barBelow
+}
+
+.DefaultLayout_compositePlayerBar___WAcQ {
+    display: flex;
+    position: fixed;
+    z-index: var(--ym-z-index-player);
+    flex-direction: column;
+    border-radius: var(--ym-radius-size-xl) var(--ym-radius-size-xl) 0 0;
+    background-color: var(--ym-background-color-primary-enabled-basic);
+    width: 100%;
+    inset-block-end: 0
+}
+
+.TopAdvertBanner_root__aAZ0o {
+    background-color: var(--ym-background-color-primary-enabled-content);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    transition: scrollbar-color .2s ease-in-out;
+    scrollbar-width: none;
+    --scrollbar-hidden: transparent
+}
+
+.TopAdvertBanner_root_hidden__l3FTx {
+    display: none
+}
+
+.TopAdvertBanner_root__aAZ0o::-webkit-scrollbar-thumb {
+    border: 8px solid transparent;
+    border-radius: var(--ym-radius-size-l);
+    background-clip: content-box;
+    min-height: 50px
+}
+
+.TopAdvertBanner_root__aAZ0o::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0
+}
+/*Spotify Screen*/
+/*--------------------------------------------*/
+.Spotify_Screen {
+	position: absolute;
+	display: grid;
+	height: calc(100% - 165px);
+	width: 280px;
+	right: 7px;
+	bottom: 103px;
+	z-index: 1;
+	overflow-y: scroll;
+	background-color: var(--ym-outline-color-primary-disabled) !important;
+    border: 1px solid var(--ym-outline-color-primary-disabled);
+    border-radius: var(--ym-radius-size-l);
+}
+
+.Spotify_Screen::-webkit-scrollbar {
+	display: none;
+}
+.SM_Decorate_Buttons {
+	position: absolute;
+	right: 20px;
+	top: 27px;
+	content: url("http://127.0.0.1:2007/assets/SM-Decorate-Buttons.png");
+}
+
+.SM_Cover {
+	width: 250px;
+	height: 250px;
+	border-radius: 10px;
+	margin: 25px auto;
+	margin-top: 18px;
+	z-index: 20;
+}
+
+.SM_Decorate_AddToPlaylist_Button {
+	position: absolute;
+	right: 15px;
+	content: url("http://127.0.0.1:2007/assets/SM-Decorate-AddToPlaylist-Button.png");
+	margin-top: 5px;
+}
+
+.SM_Track_Name {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 15px;
+    margin-top: -12px;
+    max-width: 210px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.SM_Artist {
+    color: #fff7;
+    font-size: 15px;
+    font-weight: 400;
+    margin-left: 15px;
+    max-width: 210px;
+    margin-top: 1px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.All_Info_Container {
+	position: absolute;
+	top: 350px;
+	left: 14px;
+	background: var(--ym-outline-color-primary-disabled) !important;
+}
+
+.Artist_Info_Container {
+	height: auto;
+	background: var(--ym-outline-color-primary-disabled) !important;
+	width: 251px;
+	padding: 10px;
+	border-radius: 8px;
+}
+
+.Info_Title {
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: left;
+	padding: 6px;
+}
+
+.Search_Info {
+	margin-top: 5px;
+	padding: 0px 6px 0px 6px;
+}
+
+.Achtung_Alert {
+	color: #ff0;
+	text-align: center;
+	font-style: italic;
+	margin-top: 16px;
+	margin-bottom: 10px;
+	font-size: 13px;
+	background: 0;
+	padding: 6px;
+	width: 253px;
+	border-radius: 5px;
+}
+
+/*Neuro*/
+.GPT_Info_Container {
+	margin-top: 16px;
+	height: auto;
+	background: #1F1F1F;
+	width: 251px;
+	padding: 10px;
+	border-radius: 8px;
+}
+
+.GPT_Info_Title {
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: left;
+	padding: 6px;
+}
+
+.GPT_Search_Info {
+	margin-top: 5px;
+	padding: 0px 6px 0px 6px;
+}
+/*--------------------------------------------*/
+
+/*Юзер*/
+/*--------------------------------------------*/
+[aria-label="Ваш профиль"] {
+	position: fixed;
+	right: 160px;
+	top: 13px;
+	-webkit-app-region: no-drag;
+}
+
+.UserProfile_dialog_desktop__0p006 {
+	position: fixed;
+	right: 100px;
+	left: calc(100% - 420px);
+	top: 70px;
+	bottom: calc(100% - 610px);
+	-webkit-app-region: no-drag;
+}
+
+.NavbarDesktopUserWidget_userProfileContainer__ha3Tm {
+	position: fixed;
+	pointer-events: none;
+	-webkit-app-region: no-drag;
+}
+
+.NavbarDesktopUserWidget_userProfileContainer__ha3Tm * * {
+	pointer-events: auto;
+	-webkit-app-region: no-drag;
+}
+
+@media screen and (prefers-reduced-motion:reduce) {
+    .UserProfile_userId__Jb6Ix>button {
+        transition: none
+    }
+}
+
+.UserProfile_dialog__kQ8sz {
+    position: fixed;
+    z-index: var(--ym-z-index-overlay);
+    box-shadow: none;
+    background-color: var(--ym-background-color-primary-enabled-content);
+    max-height: calc(100vh - var(--user-top-distance) - var(--ym-spacer-size-xxxxxl))
+}
+
+.UserProfile_dialog_desktop__0p006 {
+    top: auto;
+    right: auto;
+    inset-block-end: calc(var(--user-top-distance) + var(--ym-spacer-size-l));
+    border: 1px solid var(--ym-controls-color-primary-outline-enabled)
+}
+
+.UserProfile_dialog_desktop__0p006,[dir=rtl] .UserProfile_dialog_desktop__0p006 {
+    left: auto;
+    inset-inline-start: var(--ym-spacer-size-xl)
+}
+
+.UserProfile_dialog__kQ8sz iframe {
+    max-height: calc(100vh - var(--user-top-distance) - var(--ym-spacer-size-xxxxxl))!important
+}
+
+@media only screen and (max-width: 767.98px) {
+    .UserProfile_dialog__kQ8sz iframe {
+        max-height:none!important
+    }
+
+    .UserProfile_dialog__kQ8sz {
+        max-height: none
+    }
+}
+
+.UserProfile_meta___okny {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ym-spacer-size-xxxs);
+    flex-grow: 1;
+    min-width: 0;
+    height: -moz-fit-content;
+    height: fit-content
+}
+
+.UserProfile_plusLink__NhVsU {
+    transition: transform var(--ym-duration-transition);
+    width: -moz-fit-content;
+    width: fit-content
+}
+
+.UserProfile_plusLink__NhVsU:focus-visible,.UserProfile_plusLink__NhVsU:hover {
+    transform: scale(1.02)
+}
+/*--------------------------------------------*/
+
+/*Тайтлбар*/
+/*--------------------------------------------*/
+.TitleBar_root__QjdOZ {
+	position: fixed;
+	user-select: unset;
+	height: 60px;
+	pointer-events: none;
+	--title-bar-button-width: 100%;
+}
+
+.TitleBar_button__9MptL {
+	width: 50px;
+	height: 60px;
+	pointer-events: auto;
+}
+/*--------------------------------------------*/
