@@ -1,9 +1,11 @@
 {
   "name": "SpotCol",
-  "image": "banner.png",
+  "image": "image.jpg",
+  "banner": "banner.jpg",
   "author": "Imperiadicks",
   "description": "Default theme.",
   "version": "1.0.0",
   "css": "style.css",
-  "script": "script.js"
+  "script": "script.js",
+  "tags": ["Spotify", "colorize"]
 }

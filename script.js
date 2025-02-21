@@ -599,7 +599,8 @@ createNotification();
 /*--------------------------------------------*/
 let settings = {};
 
-let neuroSearch;
+let neuroSearch, updateInterval;
+let settingsDelay = 1000;
 
 function log(text) {
     console.log('[Customizable LOG]: ', text)
@@ -647,22 +648,95 @@ async function setSettings(newSettings) {
             allInfoContainer.style.display = 'none';
         }
     }
+
+    // Colorful II Downloader
+    if (Object.keys(settings).length === 0 || settings['Colorful'].toggleColorfulII !== newSettings['Colorful'].toggleColorfulII) {
+        const cssId = "custom-css"; 
+        const existingLink = document.getElementById(cssId);
+    
+        if (newSettings['Colorful'].toggleColorfulII) {
+            if (!existingLink) {
+                fetch("https://raw.githubusercontent.com/Diramix/Colorful/Colorful-II/Colorful%20II/style.css")
+                    .then(response => response.text())
+                    .then(css => {
+                        const style = document.createElement("style");
+                        style.id = cssId;
+                        style.textContent = css;
+                        document.head.appendChild(style);
+                    })
+                    .catch(error => console.error("Ошибка загрузки CSS:", error));
+            }
+        } else {
+            if (existingLink) {
+                existingLink.remove();
+            }
+        }
+    }
+
+    // Open Blocker
+    const modules = [
+        "donations",
+        "concerts",
+        "trailers",
+        "relevantnow"
+    ];
+    
+    modules.forEach(module => {
+        const settingKey = `OB${module.charAt(0) + module.slice(1)}`;
+        const cssId = `openblocker-${module}`;
+        const existingLink = document.getElementById(cssId);
+        
+        if (Object.keys(settings).length === 0 || settings['Open-Blocker'][settingKey] !== newSettings['Open-Blocker'][settingKey]) {
+            if (newSettings['Open-Blocker'][settingKey]) {
+                if (existingLink) {
+                    existingLink.remove();
+                }
+            } else {
+                if (!existingLink) {
+                    fetch(`https://raw.githubusercontent.com/Open-Blocker-FYM/Open-Blocker/refs/heads/main/blocker-css/${module}.css`)
+                        .then(response => response.text())
+                        .then(css => {
+                            const style = document.createElement("style");
+                            style.id = cssId;
+                            style.textContent = css;
+                            document.head.appendChild(style);
+                        })
+                        .catch(error => console.error(`Ошибка загрузки CSS: ${module}`, error));
+                }
+            }
+        }
+    });
+
+    // Auto Play
+    if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {
+        document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)
+        ?.click();
+        window.hasRun = true;
+    }
+    
+    // Update theme settings delay
+    if (Object.keys(settings).length === 0 || settings['Особое'].setInterval.text !== newSettings['Особое'].setInterval.text) {
+        const newDelay = parseInt(newSettings['Особое'].setInterval.text, 10) || 1000;
+        if (settingsDelay !== newDelay) {
+            settingsDelay = newDelay;
+
+            // Обновление интервала
+            clearInterval(updateInterval);
+            updateInterval = setInterval(update, settingsDelay);
+        }
+    }
 }
 
 async function update() {
     const newSettings = await getSettings();
     await setSettings(newSettings);
-
-    settings = newSettings
+    settings = newSettings;
 }
 
 function init() {
-    setInterval(async () => {
-        await update();
-    }, 3 * 1000);
-    
     update();
+    updateInterval = setInterval(update, settingsDelay);
 }
 
-setTimeout(init, 2000)
+init();
 /*--------------------------------------------*/
