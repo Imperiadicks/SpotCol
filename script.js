@@ -629,83 +629,18 @@ async function getSettings() {
 }
 
 async function setSettings(newSettings) {
-    // Проверка и обновление значения neuroSearch
-    if (Object.keys(settings).length === 0 || settings['Действия'].gptSearch !== newSettings['Действия'].gptSearch) {
-        if (newSettings['Действия'].gptSearch) {
-            neuroSearch = true;
-        } else {
-            neuroSearch = false;
-        }
+    let combinedStyle = document.getElementById('combined-style');
+    if (!combinedStyle) {
+        combinedStyle = document.createElement('style');
+        combinedStyle.id = 'combined-style';
+        document.head.appendChild(combinedStyle);
     }
-
-    // Включение/отключение All_Info_Container
-    const allInfoContainer = document.querySelector('.All_Info_Container');
-
-    if (Object.keys(settings).length === 0 || settings['Действия'].allInfoContainerToggle !== newSettings['Действия'].allInfoContainerToggle) {
-        if (newSettings['Действия'].allInfoContainerToggle) {
-            allInfoContainer.style.display = 'block';
-        } else {
-            allInfoContainer.style.display = 'none';
-        }
-    }
-
-    // Colorful II Downloader
-    if (Object.keys(settings).length === 0 || settings['Colorful'].toggleColorfulII !== newSettings['Colorful'].toggleColorfulII) {
-        const cssId = "custom-css"; 
-        const existingLink = document.getElementById(cssId);
     
-        if (newSettings['Colorful'].toggleColorfulII) {
-            if (!existingLink) {
-                fetch("https://raw.githubusercontent.com/Diramix/Colorful/Colorful-II/Colorful%20II/style.css")
-                    .then(response => response.text())
-                    .then(css => {
-                        const style = document.createElement("style");
-                        style.id = cssId;
-                        style.textContent = css;
-                        document.head.appendChild(style);
-                    })
-                    .catch(error => console.error("Ошибка загрузки CSS:", error));
-            }
-        } else {
-            if (existingLink) {
-                existingLink.remove();
-            }
+    combinedStyle.textContent = `
+        section.PlayerBarDesktop_root__d2Hwi {
+            background: ${newSettings['Developer'].togglePlayerBackground ? '1' : '0'} !important;
         }
-    }
-
-    // Open Blocker
-    const modules = [
-        "donations",
-        "concerts",
-        "trailers",
-        "relevantnow"
-    ];
-    
-    modules.forEach(module => {
-        const settingKey = `OB${module.charAt(0) + module.slice(1)}`;
-        const cssId = `openblocker-${module}`;
-        const existingLink = document.getElementById(cssId);
-        
-        if (Object.keys(settings).length === 0 || settings['Open-Blocker'][settingKey] !== newSettings['Open-Blocker'][settingKey]) {
-            if (newSettings['Open-Blocker'][settingKey]) {
-                if (existingLink) {
-                    existingLink.remove();
-                }
-            } else {
-                if (!existingLink) {
-                    fetch(`https://raw.githubusercontent.com/Open-Blocker-FYM/Open-Blocker/refs/heads/main/blocker-css/${module}.css`)
-                        .then(response => response.text())
-                        .then(css => {
-                            const style = document.createElement("style");
-                            style.id = cssId;
-                            style.textContent = css;
-                            document.head.appendChild(style);
-                        })
-                        .catch(error => console.error(`Ошибка загрузки CSS: ${module}`, error));
-                }
-            }
-        }
-    });
+    `;
 
     // Auto Play
     if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {

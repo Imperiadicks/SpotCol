@@ -1,25 +1,6 @@
 {
   "sections": [
     {
-      "title": "Настройки",
-      "items": [
-        {
-          "id": "websocket",
-          "name": "Настроки WebSocket",
-          "description": "",
-          "type": "text",
-          "buttons": [
-            {
-              "id": "port",
-              "name": "Порт",
-              "text": "8765",
-              "defaultParameter": "8765"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "title": "Действия",
       "items": [
         {
@@ -64,8 +45,22 @@
           "buttons": [
             {
               "name": "text",
-              "text": "1000",
+              "text": "1",
               "defaultParameter": "1000"
+            }
+          ]
+        },
+        {
+          "id": "websocket",
+          "name": "Настроки WebSocket",
+          "description": "",
+          "type": "text",
+          "buttons": [
+            {
+              "id": "port",
+              "name": "Порт",
+              "text": "8765",
+              "defaultParameter": "8765"
             }
           ]
         }
@@ -78,7 +73,7 @@
           "id": "OBdonations",
           "name": "Донаты",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": true
         },
         {
@@ -99,7 +94,7 @@
           "id": "OBrelevantnow",
           "name": "Актуально сейчас",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": true
         }
       ]
@@ -111,6 +106,22 @@
           "id": "devAutoPlayOnStart",
           "name": "Автоплей",
           "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": false
+        },
+        {
+          "id": "togglePlayerBackground",
+          "name": "Прозрачный плеер",
+          "description": "Убирает background, и плеер становится прозрачным",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": false
+        },
+        {
+          "id": "Main",
+          "name": "прозрачное",
+          "description": "Убирает background, и всё становится прозрачным",
           "type": "button",
           "bool": false,
           "defaultParameter": false

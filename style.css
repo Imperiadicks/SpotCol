@@ -121,9 +121,9 @@
 /*Spotify Screen*/
 /*--------------------------------------------*/
 .Spotify_Screen {
-	position: absolute;
+	position: fixed;
 	display: grid;
-	height: calc(100% - 143px);
+	height: calc(100% - 148px);
 	width: 280px;
 	right: 7px;
 	bottom: 86px;
@@ -598,11 +598,14 @@ body > div.DefaultLayout_root__7J0wo.DefaultLayout_root_applicationPreserveTitle
 	top: 70px;
 	bottom: calc(100% - 610px);
 }
-
 /*--------------------------------------------*/
 
 /*Плеер*/
 /*--------------------------------------------*/
+.DefaultLayout_playerBar___9IaS {
+    grid-area: playerbar
+}
+
 .DefaultLayout_playerBar___9IaS {
     grid-area: playerbar
 }
@@ -612,20 +615,18 @@ body > div.DefaultLayout_root__7J0wo.DefaultLayout_root_applicationPreserveTitle
     --player-cover-height: 64px;
     display: grid;
     position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	height: 88px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   height: 88px;
     grid-template-columns: repeat(3,33.3%);
     align-items: center;
-    transition: background-color var(--ym-duration-transition),opacity .15s ease-in;
-    border: 1px solid var(--ym-outline-color-primary-disabled);
-    border-radius: var(--ym-radius-size-l);
-    background-color: var(--player-average-color-background,var(--ym-background-color-primary-enabled-player));
+    border: 0;
+    border-radius: 0;
     padding-inline-start:var(--ym-spacer-size-xs);padding-inline-end: var(--ym-spacer-size-xs);
     width: 100%;
     height: var(--player-bar-height);
-    overflow: hidden
+    overflow: hidden;
 }
 /*--------------------------------------------*/
 /*TitleBar*/
