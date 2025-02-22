@@ -637,11 +637,21 @@ async function setSettings(newSettings) {
     }
     
     combinedStyle.textContent = `
-        section.PlayerBarDesktop_root__d2Hwi {
-            background: ${newSettings['Developer'].togglePlayerBackground ? '1' : '0'} !important;
+        .PlayerBarDesktop_root__d2Hwi {
+            background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
         }
-    `;
-
+        .Content_main__8_wIa {
+            background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+    } 
+        .Spotify_Screen {
+        background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+        }
+        .All_Info_Container{
+        background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+        }
+        .Artist_Info_Container{
+        background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+        `;
     // Auto Play
     if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {
         document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)

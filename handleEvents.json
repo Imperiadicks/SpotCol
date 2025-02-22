@@ -22,19 +22,6 @@
       ]
     },
     {
-      "title": "Colorful",
-      "items": [
-        {
-          "id": "toggleColorfulII",
-          "name": "Colorful II Integration",
-          "description": "Активирует последнюю версию темы Colorful II для Spotify Music! II.",
-          "type": "button",
-          "bool": false,
-          "defaultParameter": false
-        }
-      ]
-    },
-    {
       "title": "Особое",
       "items": [
         {
@@ -112,18 +99,10 @@
         },
         {
           "id": "togglePlayerBackground",
-          "name": "Прозрачный плеер",
-          "description": "Убирает background, и плеер становится прозрачным",
+          "name": "прозрачное",
+          "description": "Убирает background, и все главные контейнеры становятся прозрачным",
           "type": "button",
           "bool": true,
-          "defaultParameter": false
-        },
-        {
-          "id": "Main",
-          "name": "прозрачное",
-          "description": "Убирает background, и всё становится прозрачным",
-          "type": "button",
-          "bool": false,
           "defaultParameter": false
         }
       ]

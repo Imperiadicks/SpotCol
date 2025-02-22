@@ -52,7 +52,6 @@
     flex-grow: 1;
     border: 1px solid var(--ym-outline-color-primary-disabled);
     border-radius: var(--ym-radius-size-xl);
-    background-color: var(--ym-outline-color-primary-disabled) !important;
     overflow: hidden
 }
 
@@ -129,11 +128,9 @@
 	bottom: 86px;
 	z-index: 1;
 	overflow-y: scroll;
-	background-color: var(--ym-outline-color-primary-disabled) !important;
-    border: 1px solid var(--ym-outline-color-primary-disabled);
+	background-color: var(--ym-background-color-primary-enabled-content) !important;
     border-radius: var(--ym-radius-size-l);
 }
-
 .Spotify_Screen::-webkit-scrollbar {
 	display: none;
 }
