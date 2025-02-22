@@ -638,22 +638,22 @@ async function setSettings(newSettings) {
     
     combinedStyle.textContent = `
         .PlayerBarDesktop_root__d2Hwi {
-            background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
         }
         .Content_main__8_wIa {
-            background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
-    } 
+            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
+    }
         .Spotify_Screen {
-        background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
         }
         .All_Info_Container{
-        background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
         }
         .Artist_Info_Container{
-        background: ${newSettings['Developer'].togglePlayerBackground ? '0' : '1'} !important;
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
         `;
     // Auto Play
-    if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {
+    if (newSettings['Действия'].devAutoPlayOnStart && !window.hasRun) {
         document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)
         ?.click();
         window.hasRun = true;

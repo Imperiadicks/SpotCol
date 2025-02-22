@@ -18,6 +18,14 @@
           "type": "button",
           "bool": false,
           "defaultParameter": false
+        },
+        {
+          "id": "devAutoPlayOnStart",
+          "name": "Автоплей",
+          "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": false
         }
       ]
     },
@@ -83,26 +91,13 @@
           "type": "button",
           "bool": false,
           "defaultParameter": true
-        }
-      ]
-    },
-    {
-      "title": "Developer",
-      "items": [
-        {
-          "id": "devAutoPlayOnStart",
-          "name": "Автоплей",
-          "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
-          "type": "button",
-          "bool": true,
-          "defaultParameter": false
         },
         {
           "id": "togglePlayerBackground",
           "name": "прозрачное",
           "description": "Убирает background, и все главные контейнеры становятся прозрачным",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": false
         }
       ]
