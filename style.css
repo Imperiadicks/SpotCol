@@ -123,10 +123,10 @@
 .Spotify_Screen {
 	position: absolute;
 	display: grid;
-	height: calc(100% - 165px);
+	height: 930px;
 	width: 280px;
 	right: 7px;
-	bottom: 103px;
+	bottom: 86px;
 	z-index: 1;
 	overflow-y: scroll;
 	background-color: var(--ym-outline-color-primary-disabled) !important;

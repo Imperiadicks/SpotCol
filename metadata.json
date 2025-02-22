@@ -4,8 +4,8 @@
   "banner": "banner.jpg",
   "author": "Imperiadicks",
   "description": "Default theme.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "css": "style.css",
   "script": "script.js",
-  "tags": ["Spotify", "colorize"]
+  "tags": ["Spotify", "Colored"]
 }
