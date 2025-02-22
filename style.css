@@ -123,7 +123,7 @@
 .Spotify_Screen {
 	position: absolute;
 	display: grid;
-	height: 930px;
+	height: calc(100% - 143px);
 	width: 280px;
 	right: 7px;
 	bottom: 86px;
