@@ -26,6 +26,22 @@
           "type": "button",
           "bool": true,
           "defaultParameter": false
+        },
+        {
+          "id": "myBackgroundButton",
+          "name": "фоновое изображение",
+          "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": false
+        },
+        {
+          "id": "Newbuttona",
+          "name": "Vibe",
+          "description": "Изменяет размер главное.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": false
         }
       ]
     },
@@ -40,7 +56,7 @@
           "buttons": [
             {
               "name": "text",
-              "text": "1",
+              "text": "150",
               "defaultParameter": "1000"
             }
           ]

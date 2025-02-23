@@ -329,30 +329,44 @@ setInterval(() => {
         spotifyScreen.style.display = 'none';
     }
 }, 1000);
+function setNewBackground(isOn) {
+    setInterval(() => {
+    const targetElement = document.querySelector('[class*="MainPage_vibe"]');
+    if (targetElement) {
+        if (isOn) {
+            // Этот код получает обложку и устанавливает фон
+            const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover__IYLwR"]');
+            let imgBackground = "http://127.0.0.1:2007/Assets/no-cover-image.png";
+        
+            imgElements.forEach(img => {
+                if (img.src && img.src.includes('/100x100')) {
+                    imgBackground = img.src.replace('/100x100', '/1000x1000');
+                    console.log(imgBackground);
+                    backgroundReplace(imgBackground)
+                }
+        
+            });
+        
+            const targetElementCover = document.querySelector('.SM_Cover');
+            if (targetElementCover) {
+                targetElementCover.style.background = `url(${imgBackground}) center center / cover no-repeat`;
+                console.log(targetElementCover);
+            }
+        
+            const targetElementBackground = document.querySelector('.SM_Background');
+            if (targetElementBackground) {
+                targetElementBackground.style.background = `url(${imgBackground}) center center / cover no-repeat`;
+                console.log(targetElementBackground);
+            }
 
-setInterval(() => {
-    const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover__IYLwR"]');
-    let imgBackground = "http://127.0.0.1:2007/Assets/no-cover-image.png";
-
-    imgElements.forEach(img => {
-        if (img.src && img.src.includes('/100x100')) {
-            imgBackground = img.src.replace('/100x100', '/1000x1000');
-            console.log(imgBackground);
+            targetElement.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, var(--color-dark-6) 100%), url(${imgBackground}) center center / cover no-repeat`;
         }
-    });
-
-    const targetElementCover = document.querySelector('.SM_Cover');
-    if (targetElementCover) {
-        targetElementCover.style.background = `url(${imgBackground}) center center / cover no-repeat`;
-        console.log(targetElementCover);
-    }
-
-    const targetElementBackground = document.querySelector('.SM_Background');
-    if (targetElementBackground) {
-        targetElementBackground.style.background = `url(${imgBackground}) center center / cover no-repeat`;
-        console.log(targetElementBackground);
+            else {
+            targetElement.style.background = ''; // Возвращаем дефолтный фон, если кнопка выключена
+            }
     }
 }, 1000);
+}
 /*--------------------------------------------*/
 
 // Вики
@@ -629,6 +643,9 @@ async function getSettings() {
 }
 
 async function setSettings(newSettings) {
+    if (Object.keys(settings).length === 0 || settings['Действия'].myBackgroundButton !== newSettings['Действия'].myBackgroundButton) {
+        setNewBackground(newSettings['Действия'].myBackgroundButton);
+    }
     let combinedStyle = document.getElementById('combined-style');
     if (!combinedStyle) {
         combinedStyle = document.createElement('style');
@@ -641,8 +658,7 @@ async function setSettings(newSettings) {
             background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
         }
         .Content_main__8_wIa {
-            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
-    }
+            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;}
         .Spotify_Screen {
         background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
         }
@@ -652,6 +668,18 @@ async function setSettings(newSettings) {
         .Artist_Info_Container{
         background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
         `;
+        let Newbutton = document.getElementById('New-Button');
+        if (!Newbutton) {
+            Newbutton = document.createElement('style');
+            Newbutton.id = 'New-Button';
+            document.head.appendChild(Newbutton);
+        }
+
+        Newbutton.textContent = `.MainPage_vibe__XEBbh{
+        height: ${newSettings['Действия'].Newbuttona ? '81vh;' : '57vh;'}
+        }
+        `;
+
     // Auto Play
     if (newSettings['Действия'].devAutoPlayOnStart && !window.hasRun) {
         document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)

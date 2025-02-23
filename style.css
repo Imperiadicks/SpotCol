@@ -46,6 +46,55 @@
 	left: -100px;
 }
 /*--------------------------------------------*/
+
+/* DevPanel
+/*--------------------------------------------*/
+.DevPanel_root__Gu7qn {
+	-webkit-app-region: no-drag;
+    position: absolute;
+    display: inline-block;
+	inset-block-end: 1032px;
+    inset-inline-end: 210px;
+	z-index: 999;
+}
+
+.DevPanel_panel__LnoO2 {
+    position: absolute;
+    width: 290px;
+    overflow: hidden;
+    inset-block-end: -220px;
+    inset-inline-end: 35px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+	-webkit-app-region: no-drag
+}
+
+.DevPanel_group__yDdVt,.DevPanel_panel__LnoO2 {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--ym-outline-color-primary-disabled);
+    border-radius: var(--ym-radius-size-m);
+    padding: 5px;
+    gap: 5px;
+	-webkit-app-region: no-drag
+}
+
+.DevPanel_block__SJ_76 {
+    margin-inline-start:0;margin-inline-end:0}
+
+.DevPanel_changeLanguageBlock__WGj1D,.DevPanel_generativeBlock__CwcM2 {
+    display: flex;
+    align-items: center
+}
+
+.DevPanel_changeLanguageInput__nQ01C,.DevPanel_generativeInput__hYqt3 {
+    flex: 1 1;
+    margin: var(--ym-spacer-size-xxxs);
+    border-radius: var(--ym-radius-size-xs);
+    height: 25px;
+    min-height: 25px
+}
+/*--------------------------------------------*/
 /* main
 /*--------------------------------------------*/
 .Content_main__8_wIa {
@@ -96,8 +145,7 @@
     background-color: var(--ym-background-color-primary-enabled-content);
     overflow-x: scroll;
     overflow-y: hidden;
-    transition: scrollbar-color .2s ease-in-out;
-    scrollbar-width: none;
+    scrollbar-width:auto;
     --scrollbar-hidden: transparent
 }
 
@@ -147,7 +195,7 @@
 	border-radius: 10px;
 	margin: 25px auto;
 	margin-top: 18px;
-	z-index: 20;
+	z-index: var(--ym-z-index-player);
 }
 
 .SM_Decorate_AddToPlaylist_Button {
@@ -277,7 +325,7 @@
 	border-style: solid;
 	border-color: #fff1;
 	border-width: 0;
-	z-index: 300;
+	z-index: var(--ym-z-index-player);
 }
 
 nav.NavbarDesktop_navigation__dLUGW {
@@ -527,7 +575,7 @@ body > div.DefaultLayout_root__7J0wo.DefaultLayout_root_applicationPreserveTitle
 
 .UserProfile_dialog__kQ8sz {
     position: fixed;
-    z-index: var(--ym-z-index-overlay);
+    z-index: var(--ym-z-index-player);
     box-shadow: none;
     background-color: var(--ym-background-color-primary-enabled-content);
     max-height: calc(100vh - var(--user-top-distance) - var(--ym-spacer-size-xxxxxl))
