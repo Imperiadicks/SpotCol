@@ -16,7 +16,7 @@
           "name": "Нейро-поиск",
           "description": "Включает поиск информации о треке и исполнителе через ChatGPT.",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": false
         },
         {
@@ -30,10 +30,10 @@
         {
           "id": "myBackgroundButton",
           "name": "фоновое изображение",
-          "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
+          "description": "Включает изображения трека песни (если есть картинка).",
           "type": "button",
-          "bool": true,
-          "defaultParameter": false
+          "bool": false,
+          "defaultParameter": true
         },
         {
           "id": "Newbuttona",

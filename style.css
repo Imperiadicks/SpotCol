@@ -55,7 +55,7 @@
     display: inline-block;
 	inset-block-end: 1032px;
     inset-inline-end: 210px;
-	z-index: 999;
+	z-index: 9;
 }
 
 .DevPanel_panel__LnoO2 {
@@ -103,7 +103,9 @@
     border-radius: var(--ym-radius-size-xl);
     overflow: hidden
 }
-
+.MainPage_beta__y32vb{
+	visibility: hidden;
+}
 @media only screen and (max-width: 767.98px) {
     .DefaultLayout_notificationErrorContainer__Qz_mD,.DefaultLayout_notificationInfoContainer__tKt7J {
         inset-block-end:var(--ym-spacer-size-xxl);
@@ -328,12 +330,6 @@
 	z-index: var(--ym-z-index-player);
 }
 
-nav.NavbarDesktop_navigation__dLUGW {
-    max-width: none;
-}
-.NavbarDesktop_navigation__dLUGW{
-    height: 35px;
-}
 span.NavbarDesktop_title_collapsed__IH9Bc {
     opacity: 1 !important;
     -webkit-animation: none !important;
@@ -402,17 +398,17 @@ body > div.DefaultLayout_root__7J0wo.DefaultLayout_root_applicationPreserveTitle
 }
 
 .NavbarDesktop_navigation__dLUGW {
-	margin-left: -87px;
-	margin-top: 25px;
+	margin-left: 0px;
+	margin-top: 0px;
 }
 
 .PinItem_root__WSoCn {
-	height: 65px;
+	height: 70px;
 }
 
 .PinItem_cover__9TcjE {
-	width: 48px;
-	height: 48px;
+	width: 50px;
+	height: 50px;
 	bottom: 4px;
 }
 
@@ -429,7 +425,13 @@ body > div.DefaultLayout_root__7J0wo.DefaultLayout_root_applicationPreserveTitle
 	margin-top: 3px;
 	font-size: 13px;
 }
-
+.zpkgiiHgDpbBThy6gavq {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: var(--icon-container-size);
+    height: 100%;
+    max-height: var(--icon-container-size)
+}
 body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(1),
 body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(2),
 body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(3),
@@ -461,14 +463,15 @@ body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDeskt
 	-webkit-app-region: no-drag;
 }
 .NavbarDesktop_navigation__dLUGW {
-	height: 35px;
+	height: 0px;
 }
 
 body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(4) > a > div.zpkgiiHgDpbBThy6gavq {
 	visibility: visible;
 	position: fixed;
-	margin-top: -227px;
-	left: 35px;
+	margin-top: -335px;
+	left: 175px;
+	-webkit-app-region: no-drag;
 }
 
 body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(4) > a > div.zpkgiiHgDpbBThy6gavq > span {
@@ -478,12 +481,11 @@ body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDeskt
 body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(4) > a > div.ZrkG6gNYcr4h3hfkhyT1 > span:before {
 	visibility: visible;
 	position: static;
-	content: "Моя медиатека";
 	font-weight: 500;
 	font-size: 15px;
 	position: fixed;
-	margin-top: -112px;
-	left: 80px;
+	margin-top: -386px;
+	left: 175px;
 }
 /*--------------------------------------------*/
 
