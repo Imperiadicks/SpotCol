@@ -16,7 +16,7 @@
           "name": "Нейро-поиск",
           "description": "Включает поиск информации о треке и исполнителе через ChatGPT.",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": false
         },
         {
@@ -24,7 +24,7 @@
           "name": "Автоплей",
           "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": false
         },
         {
@@ -32,7 +32,7 @@
           "name": "фоновое изображение",
           "description": "Включает изображения трека песни (если есть картинка).",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": true
         },
         {
@@ -40,7 +40,7 @@
           "name": "Vibe",
           "description": "Изменяет размер главное.",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": false
         }
       ]
@@ -84,7 +84,7 @@
           "id": "OBdonations",
           "name": "Донаты",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": true
         },
         {
@@ -105,7 +105,7 @@
           "id": "OBrelevantnow",
           "name": "Актуально сейчас",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": true
         },
         {
@@ -115,6 +115,14 @@
           "type": "button",
           "bool": false,
           "defaultParameter": false
+        },
+        {
+          "id": "NewbuttonHide",
+          "name": "Подкасты",
+          "description": "Убирает кнопку подкасты",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
         }
       ]
     }

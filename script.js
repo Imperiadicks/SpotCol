@@ -168,14 +168,44 @@ let socket;
 const theme = new Theme('WebSocket-Controls');
 let volumeNode = document.querySelector('input[data-test-id="CHANGE_VOLUME_SLIDER"]');
 
-function changeVolume(volume) {
-    const lastValue = volumeNode.value;
-    volumeNode.value = volume;
+function changeVolume(volume, isSmoothly) {
+    const startValue = parseFloat(volumeNode.value);
+    volume = parseFloat(volume);
 
-    const inputEvent = new Event("input", { bubbles: true });
-    const tracker = volumeNode._valueTracker;
-    if (tracker) tracker.setValue(lastValue);
-    volumeNode.dispatchEvent(inputEvent);
+    if (isSmoothly) {
+        const steps = 50;
+        const stepDuration = 10;
+        const stepSize = (volume - startValue) / steps;
+        let currentStep = 0;
+
+        const smoothInterval = setInterval(() => {
+            currentStep++;
+            const newValue = startValue + (stepSize * currentStep);
+            const lastValue = volumeNode.value;
+            volumeNode.value = newValue;
+
+            const inputEvent = new Event("input", { bubbles: true });
+            const tracker = volumeNode._valueTracker;
+            if (tracker) tracker.setValue(lastValue); 
+            volumeNode.dispatchEvent(inputEvent);
+
+            if (currentStep >= steps) {
+                clearInterval(smoothInterval);
+                volumeNode.value = volume;
+                const finalInputEvent = new Event("input", { bubbles: true });
+                const finalTracker = volumeNode._valueTracker;
+                if (finalTracker) finalTracker.setValue(lastValue);
+                volumeNode.dispatchEvent(finalInputEvent);
+            }
+        }, stepDuration);
+    } else {
+        volumeNode.value = volume;
+
+        const inputEvent = new Event("input", { bubbles: true });
+        const tracker = volumeNode._valueTracker;
+        if (tracker) tracker.setValue(startValue);
+        volumeNode.dispatchEvent(inputEvent);
+    }
 }
 
 const eventHandlers = {
@@ -223,7 +253,7 @@ const commandHandlers = {
             volume = Number(volumeNode.value) - (Number(data?.value) / 100);
         }
 
-        changeVolume(Math.min(1, Math.max(0, volume)));
+        changeVolume(Math.min(1, Math.max(0, volume)), data?.isSmoothly ? true : false);
     }
 };
 
@@ -244,7 +274,7 @@ theme.addAction('websocket.port', (settingsManager, hasChanged, styles) => {
 	
 	socket.addEventListener('message', (event) => {
 		console.log(`Получено от сервера: ${event.data}`);
-
+        
 		const message = JSON.parse(event.data);
 		
         if (commandHandlers[message.cmd]) {
@@ -592,7 +622,6 @@ imgElements.forEach(img => {
     if (img.src && img.src.includes('/100x100')) {
         imgBackground = img.src.replace('/100x100', '/1000x1000');
         console.log(imgBackground);
-        backgroundReplace(imgBackground)
     }
 
 }
@@ -633,7 +662,43 @@ function setNewBackground(isOn) {
     }
 }
 /*--------------------------------------------*/
+// Спонсор
+/*--------------------------------------------
+setInterval(() => {
+    const container = document.querySelector('.VibeBlock_root__z7LtR');
+    const spotifyAdError = container.querySelector('.rf_Spotify_Sponsor');
 
+    if (!spotifyAdError) {
+        const newElement = document.createElement('div');
+        newElement.className = 'rf_Spotify_Sponsor';
+        container.appendChild(newElement);
+        newElement.textContent = 'При поддержке спонсора';
+    }
+}, 1000);
+
+let currentColor = { r: 0, g: 0, b: 0 };
+
+function rgbString(r, g, b) {
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function darkenColor(color, factor) {
+    return {
+        r: Math.round(color.r * (1 - factor)),
+        g: Math.round(color.g * (1 - factor)),
+        b: Math.round(color.b * (1 - factor))
+    };
+}
+
+function interpolateColor(color1, color2, factor) {
+    const result = {
+        r: Math.round(color1.r + (color2.r - color1.r) * factor),
+        g: Math.round(color1.g + (color2.g - color1.g) * factor),
+        b: Math.round(color1.b + (color2.b - color1.b) * factor)
+    };
+    return result;
+}
+/*--------------------------------------------*/
 // Вики
 /*--------------------------------------------*/
 const targetElementSelector = 'body > div > div > div > section > div > div > div > div > div > div > a:nth-child(1) > span';
@@ -909,10 +974,22 @@ async function getSettings() {
 
 async function setSettings(newSettings) {
     setInterval(() => {
+        
         if (Object.keys(settings).length === 0 || settings['Действия'].myBackgroundButton !== newSettings['Действия'].myBackgroundButton) {
             setNewBackground(newSettings['Действия'].myBackgroundButton);
         }
     },5000)
+    let buttonimage = document.getElementById('Button-image');
+        if (!buttonimage) {
+            buttonimage = document.createElement('style');
+            buttonimage.id = 'Button-image';
+            document.head.appendChild(buttonimage);
+        }
+
+        buttonimage.textContent = `.Skeleton_header__1uiIw{
+        background: ${newSettings['Действия'].myBackgroundButton ? '0;' : 'var(--ym-background-color-primary-enabled-content);'}
+        }
+        `;
     let combinedStyle = document.getElementById('combined-style');
     if (!combinedStyle) {
         combinedStyle = document.createElement('style');
@@ -921,19 +998,57 @@ async function setSettings(newSettings) {
     }
     
     combinedStyle.textContent = `
-        .PlayerBarDesktop_root__d2Hwi {
-            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
+        .PlayerBarDesktop_root__d2Hwi 
+        {
+            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1;'} !important;
         }
-        .Content_main__8_wIa {
-            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;}
-        .Spotify_Screen {
-        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
+        .Content_main__8_wIa 
+        {
+            background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1;'} !important;
         }
-        .All_Info_Container{
-        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
+        .Spotify_Screen 
+        {
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1;'} !important;
         }
-        .Artist_Info_Container{
-        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1'} !important;
+        .All_Info_Container
+        {
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1;'} !important;
+        }
+        .Artist_Info_Container
+        {
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0' : '1;'} !important;
+        }
+        .LikesAndHistoryItem_root__oI1gk
+        {
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0;' : '1;'} !important;
+        }
+        .MixCard_root__9tPLV
+        {
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0;' : '1;'} !important;
+        }
+        .nHWc2sto1C6Gm0Dpw_l0
+        {   
+        backdrop-filter:${newSettings['Open-Blocker'].togglePlayerBackground ? 'blur (0px);' : 'blur (50px);'} !important;
+        }
+        .VibeContext_context__Z_82k
+        {
+        backdrop-filter:${newSettings['Open-Blocker'].togglePlayerBackground ? 'blur (0px);' : 'blur (5px);'}
+        }
+        .NewReleaseCard_root__IY5m_
+        {
+        border: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0px;' : '1px;'} !important;
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0;' : '1;'} !important;
+        }
+        .VibeButton_button__tXFAm
+        {
+        border: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0px;' : '1px;'} !important;
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0;' : '1;'} !important;
+        }
+        .NeuromusicButton_button__kT4GN
+        {
+        border: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0px;' : '1px;'} !important;
+        background: ${newSettings['Open-Blocker'].togglePlayerBackground ? '0;' : '1;'} !important;       
+        }
         `;
         let Newbutton = document.getElementById('New-Button');
         if (!Newbutton) {
@@ -943,10 +1058,23 @@ async function setSettings(newSettings) {
         }
 
         Newbutton.textContent = `.MainPage_vibe__XEBbh{
-        height: ${newSettings['Действия'].Newbuttona ? '89vh;' : '57vh;'}
+        height: ${newSettings['Действия'].Newbuttona ? '89vh;' : '57vh'}
         }
         `;
+    
+        let buttonhide = document.getElementById('Button-hide');
+        if (!buttonhide) {
+            buttonhide = document.createElement('style');
+            buttonhide.id = 'Button-hide';
+            document.head.appendChild(buttonhide);
+        }
 
+        buttonhide.textContent = `body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(3) > a > div.zpkgiiHgDpbBThy6gavq {
+        visibility: ${newSettings['Open-Blocker'].NewbuttonHide ? 'Visible;' : 'hidden;'}
+        }
+        body > div.WithTopBanner_root__P__x3 > div > div > aside > div > div.NavbarDesktop_scrollableContainer__HLc9D > div > nav > ol > li:nth-child(4) > a > div.zpkgiiHgDpbBThy6gavq {
+           left: ${newSettings['Open-Blocker'].NewbuttonHide ? '175px;' : '125px'};
+    }`;
     // Auto Play
     if (newSettings['Действия'].devAutoPlayOnStart && !window.hasRun) {
         document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)
