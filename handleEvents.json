@@ -24,7 +24,7 @@
           "name": "Автоплей",
           "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": false
         },
         {
@@ -32,13 +32,21 @@
           "name": "фоновое изображение",
           "description": "Включает изображения трека песни (если есть картинка).",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": true
         },
         {
           "id": "Newbuttona",
           "name": "Vibe",
           "description": "Изменяет размер главное.",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": false
+        },
+        {
+          "id": "new_1741021451333",
+          "name": "Новый элемент",
+          "description": "",
           "type": "button",
           "bool": false,
           "defaultParameter": false
@@ -56,7 +64,7 @@
           "buttons": [
             {
               "name": "text",
-              "text": "150",
+              "text": "1000",
               "defaultParameter": "1000"
             }
           ]
@@ -91,14 +99,14 @@
           "id": "OBconcerts",
           "name": "Концерты",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": false
         },
         {
           "id": "OBtrailers",
           "name": "Трейлеры",
           "type": "button",
-          "bool": false,
+          "bool": true,
           "defaultParameter": false
         },
         {
@@ -121,7 +129,7 @@
           "name": "Подкасты",
           "description": "Убирает кнопку подкасты",
           "type": "button",
-          "bool": true,
+          "bool": false,
           "defaultParameter": true
         }
       ]

@@ -36,7 +36,7 @@ class SettingsManager {
 
     async update() {
         try {
-            const response = await fetch('http://localhost:2007/get_handle');
+            const response = await fetch('http://localhost:2007/get_handle?name=SpotCol');
             if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
 
             const { data } = await response.json();
@@ -662,43 +662,6 @@ function setNewBackground(isOn) {
     }
 }
 /*--------------------------------------------*/
-// Спонсор
-/*--------------------------------------------
-setInterval(() => {
-    const container = document.querySelector('.VibeBlock_root__z7LtR');
-    const spotifyAdError = container.querySelector('.rf_Spotify_Sponsor');
-
-    if (!spotifyAdError) {
-        const newElement = document.createElement('div');
-        newElement.className = 'rf_Spotify_Sponsor';
-        container.appendChild(newElement);
-        newElement.textContent = 'При поддержке спонсора';
-    }
-}, 1000);
-
-let currentColor = { r: 0, g: 0, b: 0 };
-
-function rgbString(r, g, b) {
-    return `rgb(${r}, ${g}, ${b})`;
-}
-
-function darkenColor(color, factor) {
-    return {
-        r: Math.round(color.r * (1 - factor)),
-        g: Math.round(color.g * (1 - factor)),
-        b: Math.round(color.b * (1 - factor))
-    };
-}
-
-function interpolateColor(color1, color2, factor) {
-    const result = {
-        r: Math.round(color1.r + (color2.r - color1.r) * factor),
-        g: Math.round(color1.g + (color2.g - color1.g) * factor),
-        b: Math.round(color1.b + (color2.b - color1.b) * factor)
-    };
-    return result;
-}
-/*--------------------------------------------*/
 // Вики
 /*--------------------------------------------*/
 const targetElementSelector = 'body > div > div > div > section > div > div > div > div > div > div > a:nth-child(1) > span';
@@ -919,11 +882,6 @@ function createNotification() {
   title.textContent = 'Интеграция с ChatGPT!';
   notification.appendChild(title);
 
-  const text = document.createElement('div');
-  text.classList.add('notification_text');
-  text.innerText = 'С версии Spotify Music! 2.1.0 вы можете использовать нейропоиск для получения информации об исполнителе и треке.\nЭту функцию можно активировать в файле "script.js" в разделе "Быстрые настройки" в самом верху скрипта, который находится в папке с темой.\n\nОтдельная благодарность chepuxcat за идею и API <3';
-  notification.appendChild(text);
-
   const okButton = document.createElement('button');
   okButton.classList.add('notification_ok_button');
   okButton.textContent = 'OK';
@@ -952,7 +910,7 @@ function log(text) {
 
 async function getSettings() {
     try {
-        const response = await fetch("http://127.0.0.1:2007/get_handle");
+        const response = await fetch("http://localhost:2007/get_handle?name=SpotCol");
         if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
         const data = await response.json();
         if (!data?.data?.sections) {
