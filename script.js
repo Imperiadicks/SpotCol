@@ -931,6 +931,44 @@ async function getSettings() {
 }
 
 async function setSettings(newSettings) {
+    // Open Blocker
+    const modules = [
+        "donations",
+        "concerts",
+        "userprofile",
+        "trailers",
+        "betabutton",
+        "vibeanimation",
+        "relevantnow",
+        "artistrecommends",
+        "barbelow"
+    ];
+
+    modules.forEach(module => {
+        const settingKey = `OB${module.charAt(0) + module.slice(1)}`;
+        const cssId = `openblocker-${module}`;
+        const existingLink = document.getElementById(cssId);
+        
+        if (Object.keys(settings).length === 0 || settings['Open-Blocker'][settingKey] !== newSettings['Open-Blocker'][settingKey]) {
+            if (newSettings['Open-Blocker'][settingKey]) {
+                if (existingLink) {
+                    existingLink.remove();
+                }
+            } else {
+                if (!existingLink) {
+                    fetch(`https://raw.githubusercontent.com/Open-Blocker-FYM/Open-Blocker/refs/heads/main/blocker-css/${module}.css`)
+                        .then(response => response.text())
+                        .then(css => {
+                            const style = document.createElement("style");
+                            style.id = cssId;
+                            style.textContent = css;
+                            document.head.appendChild(style);
+                        })
+                        .catch(error => console.error(`Ошибка загрузки CSS: ${module}`, error));
+                }
+            }
+        }
+    });
     setInterval(() => {
         
         if (Object.keys(settings).length === 0 || settings['Действия'].myBackgroundButton !== newSettings['Действия'].myBackgroundButton) {
