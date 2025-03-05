@@ -4,7 +4,7 @@
   "banner": "banner.jpg",
   "author": ["imperiadicks"],
   "description": "Spotify and Colorize",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "type": "theme",
   "css": "style.css",
   "script": "script.js",
