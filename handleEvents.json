@@ -44,9 +44,9 @@
           "defaultParameter": false
         },
         {
-          "id": "new_1741021451333",
-          "name": "Новый элемент",
-          "description": "",
+          "id": "togglePlayerBackground",
+          "name": "прозрачность",
+          "description": "убирает весь background, там где это уместно",
           "type": "button",
           "bool": false,
           "defaultParameter": false
